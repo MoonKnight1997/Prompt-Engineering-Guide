@@ -102,7 +102,29 @@ Claude: [Loads Due Diligence Data Pack Skill]
 - Creates findings summary
 ```
 
-### Example 3: Earnings Analysis
+### Example 3: Advanced Financial Modeling
+
+**Setup:**
+1. Create project: "ACME Corp Investment Analysis"
+2. Add concise prompt to project instructions
+3. Upload: Financial statements, management projections, market data
+
+**Conversation:**
+```
+You: "Build a comprehensive financial model with Monte Carlo simulation
+to assess valuation under different scenarios"
+
+Claude: [Loads Creating Financial Models Skill]
+- Builds DCF with detailed assumptions
+- Creates bull/base/bear scenarios
+- Runs Monte Carlo simulation with 10,000 iterations
+- Generates probability distributions for outcomes
+- Provides statistical analysis of valuation ranges
+- Creates sensitivity tables for key drivers
+- Outputs risk-adjusted valuation recommendations
+```
+
+### Example 4: Earnings Analysis
 
 **Setup:**
 1. Create project: "Portfolio Monitoring Q1 2024"
@@ -123,7 +145,7 @@ Claude: [Loads Earnings Analysis Skill]
 
 ## Required Financial Skills Setup
 
-These prompts reference six specialized Skills that you should have in your Claude.ai setup:
+These prompts reference seven specialized Skills that you should have in your Claude.ai setup:
 
 ```
 /financial-services/
@@ -131,6 +153,7 @@ These prompts reference six specialized Skills that you should have in your Clau
   skills/
     comps-analysis.md
     dcf-modeling.md
+    creating-financial-models.md
     initiating-coverage.md
     strip-profile.md
     due-diligence.md
