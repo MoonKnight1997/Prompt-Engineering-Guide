@@ -1,6 +1,7 @@
 {
     "finetuning-gpt4o": "Fine-tuning GPT-4o",
     "function_calling": "Function Calling",
+    "apple-notes-mcp": "Apple Notes MCP Integration",
     "context-caching": "Context Caching with LLMs",
     "generating": "Generating Data",
     "synthetic_rag": "Generating Synthetic Dataset for RAG",

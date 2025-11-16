@@ -1,0 +1,445 @@
+# Apple Notes MCP Integration
+
+import {Callout} from 'nextra-theme-docs'
+
+## What is Apple Notes MCP?
+
+The Apple Notes Model Context Protocol (MCP) server enables AI assistants to seamlessly interact with Apple Notes, providing powerful capabilities for organizing, searching, and managing notes programmatically. This integration allows LLMs to create, read, update, and organize notes while maintaining the natural conversation flow.
+
+MCP (Model Context Protocol) is an open protocol that standardizes how applications provide context to LLMs. The Apple Notes MCP server exposes Apple Notes functionality as tools that can be invoked by AI assistants like Claude.
+
+## Key Capabilities
+
+The Apple Notes MCP provides the following core capabilities:
+
+- **Create Notes**: Generate new notes with titles and content
+- **Search Notes**: Find notes by content, title, or keywords
+- **Update Notes**: Modify existing note content
+- **List Notes**: Browse all notes or notes within specific folders
+- **Organize**: Create and manage folders for better organization
+- **Rich Content**: Support for formatted text, lists, and structured content
+
+## Getting Started
+
+### Prerequisites
+
+Before using Apple Notes MCP, ensure you have:
+- macOS system with Apple Notes installed
+- Apple Notes MCP server configured in your AI assistant
+- Appropriate permissions granted for accessing notes
+
+### Basic Setup
+
+The Apple Notes MCP server needs to be configured as a tool in your LLM application. Once configured, the assistant can invoke Apple Notes operations through natural language commands.
+
+## Prompting Strategies for Apple Notes MCP
+
+### 1. Note Creation and Organization
+
+**Effective Prompt Structure:**
+```
+Create a new note titled "[Title]" with the following content:
+[Content]
+
+Organize it in the "[Folder Name]" folder.
+```
+
+**Example:**
+```
+Create a new note titled "Meeting Notes - Q1 Planning" with the following content:
+
+# Q1 Planning Meeting
+Date: January 15, 2025
+
+## Attendees
+- Sarah Chen
+- Mike Rodriguez
+- Alex Kim
+
+## Key Decisions
+- Launch new feature by end of Q1
+- Weekly check-ins every Monday
+- Budget approved: $50K
+
+## Action Items
+- [ ] Sarah: Draft project timeline
+- [ ] Mike: Set up development environment
+- [ ] Alex: Research competitor features
+
+Organize it in the "Work/Meetings" folder.
+```
+
+### 2. Intelligent Search and Retrieval
+
+**Effective Prompt Structure:**
+```
+Search my notes for [topic/keyword] and summarize the key information about [specific aspect].
+```
+
+**Example:**
+```
+Search my notes for "project timeline" and summarize all deadlines and milestones mentioned across different notes.
+```
+
+**Advanced Search Example:**
+```
+Find all notes related to "customer feedback" from the past month and create a summary highlighting:
+1. Common themes
+2. Critical issues
+3. Feature requests
+```
+
+### 3. Note Summarization and Processing
+
+**Effective Prompt Structure:**
+```
+Read the note titled "[Note Title]" and [action: summarize/extract/analyze/reformat].
+```
+
+**Example:**
+```
+Read the note titled "Research Paper Ideas" and:
+1. Extract all paper topics mentioned
+2. Categorize them by subject area
+3. Identify which ones have the most supporting notes
+4. Create a prioritized list based on available research
+```
+
+### 4. Batch Operations and Automation
+
+**Effective Prompt Structure:**
+```
+For all notes in "[Folder]", [perform action] and [organize results].
+```
+
+**Example:**
+```
+For all notes in the "Daily Logs" folder from this week:
+1. Extract all tasks marked as TODO
+2. Categorize them by priority (high/medium/low)
+3. Create a consolidated task list note
+4. Organize it in the "Task Management" folder
+```
+
+### 5. Knowledge Synthesis
+
+**Effective Prompt Structure:**
+```
+Analyze notes related to [topic] and create a comprehensive [output type] that includes [specific elements].
+```
+
+**Example:**
+```
+Analyze all notes related to "Python programming tips" and create a comprehensive study guide that includes:
+- Key concepts organized by difficulty
+- Code examples from my notes
+- Best practices I've documented
+- Common pitfalls I've noted
+
+Save this as a new note titled "Python Study Guide - Consolidated"
+```
+
+## Best Practices
+
+### 1. Use Descriptive Titles
+```
+✅ Good: "Weekly Team Sync - Jan 15 - Product Roadmap Discussion"
+❌ Poor: "Meeting Notes"
+```
+
+### 2. Structured Content
+Use markdown formatting for better organization:
+```
+# Main Topic
+
+## Section 1
+- Point A
+- Point B
+
+## Section 2
+1. Step 1
+2. Step 2
+
+## References
+- [Link 1]
+- [Link 2]
+```
+
+### 3. Consistent Folder Organization
+```
+Work/
+  ├── Meetings/
+  ├── Projects/
+  └── Ideas/
+Personal/
+  ├── Goals/
+  ├── Learning/
+  └── Recipes/
+```
+
+### 4. Actionable Task Management
+```
+Use checkboxes for tasks:
+- [ ] Incomplete task
+- [x] Completed task
+
+Include due dates and assignees when relevant:
+- [ ] Review proposal (Due: Jan 20 - @Sarah)
+```
+
+### 5. Contextual Information
+Always include context in your prompts:
+```
+✅ Good: "Search notes created this week about client meetings and extract action items"
+❌ Poor: "Find action items"
+```
+
+## Advanced Prompting Patterns
+
+### Pattern 1: Progressive Note Building
+
+Build comprehensive notes through iterative refinement:
+
+```
+Step 1: Create a note titled "Project X - Master Plan" with initial structure
+
+Step 2: Search existing notes for relevant information about Project X
+
+Step 3: Update the master plan note with key findings from search
+
+Step 4: Organize related notes into a "Project X" folder
+
+Step 5: Create a summary note linking all resources
+```
+
+### Pattern 2: Cross-Reference System
+
+Create a networked knowledge base:
+
+```
+Create a note titled "[[Topic]] - Overview" that:
+1. Summarizes the main concept
+2. Lists all related notes found in my system
+3. Identifies knowledge gaps
+4. Suggests connections to other topics I've noted
+```
+
+### Pattern 3: Meeting Intelligence
+
+Transform meeting notes into actionable insights:
+
+```
+After I share meeting notes:
+1. Extract all action items with owners
+2. Identify key decisions made
+3. Note any unresolved questions
+4. Create a follow-up checklist
+5. Save as "[Meeting Name] - Action Items" in the appropriate folder
+```
+
+### Pattern 4: Learning Journal
+
+Build a personal knowledge management system:
+
+```
+When I share something I learned:
+1. Create a note with the concept explained simply
+2. Add examples from my context
+3. Link to related concepts in existing notes
+4. Add tags for easy retrieval
+5. Create a summary note if this completes a topic area
+```
+
+## Sample Prompts
+
+### Personal Knowledge Management
+```
+Create a daily reflection note with today's date that includes:
+- Three things I learned today
+- Two challenges I faced
+- One goal for tomorrow
+
+Save it in the "Personal/Daily Reflections" folder.
+```
+
+### Project Documentation
+```
+Search all notes related to "mobile app redesign" and create a comprehensive
+project documentation note that includes:
+- Project objectives
+- Design decisions and rationale
+- Technical considerations
+- Timeline and milestones
+- Open questions and blockers
+```
+
+### Research and Analysis
+```
+Find all notes where I mentioned "user feedback" and:
+1. Categorize feedback by feature area
+2. Identify the top 3 most requested features
+3. Note any recurring pain points
+4. Create a summary note with insights and recommendations
+```
+
+### Task Consolidation
+```
+Review all notes created this week and extract any tasks or action items.
+Create a consolidated weekly task list organized by:
+- Urgent and important
+- Important but not urgent
+- Quick wins (< 30 min)
+
+Save as "Weekly Task List - [Current Week]"
+```
+
+### Content Creation
+```
+Based on my notes about [topic], draft an outline for a blog post that:
+- Has an engaging introduction
+- Covers 3-5 main points with supporting details from my notes
+- Includes practical examples I've documented
+- Ends with key takeaways
+
+Save as "Blog Draft - [Topic]"
+```
+
+## Common Use Cases
+
+### 1. Meeting Assistant
+- Automatically create structured meeting notes
+- Extract and track action items
+- Generate meeting summaries
+- Link to related previous meetings
+
+### 2. Learning Companion
+- Organize study materials by subject
+- Create flashcards from notes
+- Build concept maps linking related topics
+- Track learning progress
+
+### 3. Project Manager
+- Maintain project documentation
+- Track milestones and deadlines
+- Consolidate team updates
+- Generate status reports
+
+### 4. Idea Incubator
+- Capture and organize ideas
+- Connect related concepts
+- Track idea evolution over time
+- Identify patterns in thinking
+
+### 5. Personal Assistant
+- Manage to-do lists
+- Track goals and progress
+- Organize references and resources
+- Create reminders and follow-ups
+
+## Tips for Effective Prompting
+
+### Be Specific About Actions
+```
+✅ "Search notes from the last 30 days about client meetings and create a summary"
+❌ "Look at my notes"
+```
+
+### Provide Structure
+```
+✅ "Create a note with these sections: Summary, Key Points, Action Items, Next Steps"
+❌ "Make a note about the meeting"
+```
+
+### Specify Organization
+```
+✅ "Save in Work/Projects/Q1-2025 folder"
+❌ "Put it somewhere relevant"
+```
+
+### Define Output Format
+```
+✅ "List as bullet points with dates and priorities"
+❌ "List them"
+```
+
+### Include Context
+```
+✅ "Search notes created after January 1st tagged with #urgent"
+❌ "Find urgent notes"
+```
+
+## Integration Patterns
+
+### With Calendar Events
+```
+After today's calendar events, create summary notes for each meeting that includes:
+- Meeting title and date
+- Attendees
+- Key discussion points
+- Decisions made
+- Action items
+
+Organize in "Work/Meetings/[Month]" folder.
+```
+
+### With Email Workflows
+```
+When I share an important email:
+1. Extract key information
+2. Create a note with email subject as title
+3. Summarize main points
+4. Note any action items
+5. Link to related project notes
+```
+
+### With Task Management
+```
+Every Monday morning:
+1. Review all notes from previous week
+2. Extract incomplete tasks
+3. Categorize by project
+4. Create a "Weekly Focus" note with priorities
+5. Archive completed items
+```
+
+## Troubleshooting Common Issues
+
+### Search Not Finding Notes
+- Use broader search terms
+- Search by date range
+- Check folder-specific searches
+- Try searching in note content vs. title
+
+### Organization Challenges
+- Use consistent naming conventions
+- Create a folder hierarchy guide note
+- Regular cleanup and archiving
+- Tag notes with keywords
+
+### Content Quality
+- Use templates for recurring note types
+- Maintain a style guide note
+- Review and refine notes regularly
+- Link related notes together
+
+## References
+
+- [Model Context Protocol (MCP) Documentation](https://modelcontextprotocol.io/)
+- [Apple Notes Features and Capabilities](https://support.apple.com/guide/notes/)
+- [Prompt Engineering Best Practices](https://www.promptingguide.ai/)
+- [Knowledge Management with AI](https://www.promptingguide.ai/applications)
+
+<Callout type="info">
+**Pro Tip**: Create a "System" note in your Apple Notes that documents your personal organization system, folder structure, and naming conventions. Reference this note in prompts to maintain consistency across sessions.
+</Callout>
+
+## Next Steps
+
+After mastering basic Apple Notes MCP integration:
+1. Develop custom prompt templates for your workflows
+2. Create automated note processing routines
+3. Build a personal knowledge management system
+4. Integrate with other MCP servers for enhanced workflows
+5. Experiment with advanced search and synthesis patterns
+
+The key to effective Apple Notes MCP usage is treating your notes as a dynamic, interconnected knowledge base that the AI can help you navigate, organize, and synthesize.
